@@ -56,8 +56,8 @@ class SignUp extends React.Component {
       <Container>
         <Content padder>
           <Header
-            title="Welcome"
-            content="We're glad to welcome you to the community. There's only a few questions and you'll be on your way."
+            title="Crear usuario"
+            content="Guatemala 2018"
           />
 
           {error && <Messages message={error} />}
@@ -65,21 +65,21 @@ class SignUp extends React.Component {
           <Form>
             <Item stackedLabel>
               <Label>
-                First Name
+                Nombres
               </Label>
               <Input onChangeText={v => this.handleChange('firstName', v)} />
             </Item>
 
             <Item stackedLabel>
               <Label>
-                Last Name
+                Apellido
               </Label>
               <Input onChangeText={v => this.handleChange('lastName', v)} />
             </Item>
 
             <Item stackedLabel>
               <Label>
-                Email
+                Correo
               </Label>
               <Input
                 autoCapitalize="none"
@@ -90,14 +90,14 @@ class SignUp extends React.Component {
 
             <Item stackedLabel>
               <Label>
-                Password
+                Contraseña
               </Label>
               <Input secureTextEntry onChangeText={v => this.handleChange('password', v)} />
             </Item>
 
             <Item stackedLabel>
               <Label>
-                Confirm Password
+                Confirmar Contraseña
               </Label>
               <Input secureTextEntry onChangeText={v => this.handleChange('password2', v)} />
             </Item>
@@ -106,7 +106,7 @@ class SignUp extends React.Component {
 
             <Button block onPress={this.handleSubmit}>
               <Text>
-                Sign Up
+                Crear usuario
               </Text>
             </Button>
           </Form>

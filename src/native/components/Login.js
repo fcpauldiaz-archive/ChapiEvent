@@ -70,12 +70,11 @@ class Login extends React.Component {
           <View padder>
             <Header
               title="Cumbre de las Américas"
-              content="Utilice su correo y contraseña para iniciar sesión."
+              content=""
             />
             { success ? <Messages type="success" message={success} /> : null }
             { error ? <Messages message={error} /> : null }
           </View>
-
           <Form>
             <Item stackedLabel>
               <Label>

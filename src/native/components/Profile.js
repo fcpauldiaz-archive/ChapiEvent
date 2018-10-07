@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View } from 'react-native';
+import { View, StyleSheet, Image } from 'react-native';
 import {
   Container, Content, List, ListItem, Body, Left, Text, Icon,
 } from 'native-base';
@@ -51,7 +51,12 @@ const Profile = ({ member, logout }) => (
                   content="Guatemala 2018"
                 />
               </Content>
-
+              <View style={styles.container}>
+                <Image
+                  source={require('../../images/logo_cumbres_transparent.png')}
+                  style={{ height: 200, width: 200 }}
+                />
+              </View>
               <ListItem onPress={Actions.login} icon>
                 <Left>
                   <Icon name="power" />
@@ -98,5 +103,13 @@ Profile.propTypes = {
 Profile.defaultProps = {
   member: {},
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
+});
 
 export default Profile;

@@ -18,11 +18,6 @@ import LoginComponent from '../components/Login';
 import ForgotPasswordContainer from '../../containers/ForgotPassword';
 import ForgotPasswordComponent from '../components/ForgotPassword';
 
-import LocaleContainer from '../../containers/Locale';
-import LocaleComponent from '../components/Locale';
-
-import UpdateProfileContainer from '../../containers/UpdateProfile';
-import UpdateProfileComponent from '../components/UpdateProfile';
 
 import MemberContainer from '../../containers/Member';
 import ProfileComponent from '../components/Profile';
@@ -41,7 +36,7 @@ const Index = (
       >
         <Stack
           key="profile"
-          title="PROFILE"
+          title="PRINCIPAL"
           icon={() => <Icon name="contact" {...DefaultProps.icons} />}
           {...DefaultProps.navbarProps}
         >

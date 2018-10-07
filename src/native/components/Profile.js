@@ -47,8 +47,8 @@ const Profile = ({ member, logout }) => (
             <View>
               <Content padder>
                 <Header
-                  title="Hi there,"
-                  content="Please login to gain extra access"
+                  title="Cumbre de las Américas"
+                  content="Guatemala 2018"
                 />
               </Content>
 
@@ -58,7 +58,7 @@ const Profile = ({ member, logout }) => (
                 </Left>
                 <Body>
                   <Text>
-                    Login
+                    Iniciar Sesión
                   </Text>
                 </Body>
               </ListItem>
@@ -68,7 +68,7 @@ const Profile = ({ member, logout }) => (
                 </Left>
                 <Body>
                   <Text>
-                    Sign Up
+                    Crear Usuario
                   </Text>
                 </Body>
               </ListItem>
@@ -78,23 +78,13 @@ const Profile = ({ member, logout }) => (
                 </Left>
                 <Body>
                   <Text>
-                    Forgot Password
+                   Olvidé Contraseña
                   </Text>
                 </Body>
               </ListItem>
             </View>
           )
         }
-        <ListItem onPress={Actions.locale} icon>
-          <Left>
-            <Icon name="ios-flag" />
-          </Left>
-          <Body>
-            <Text>
-              Change Language
-            </Text>
-          </Body>
-        </ListItem>
       </List>
     </Content>
   </Container>

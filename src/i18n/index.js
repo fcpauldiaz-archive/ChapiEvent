@@ -1,7 +1,8 @@
 import english from './en';
 import italian from './it';
+import spanish from './es';
 
-export const DEFAULT_LOCALE = 'en';
+export const DEFAULT_LOCALE = 'es';
 
 export const Translations = {
   en: english,

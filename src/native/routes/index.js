@@ -31,7 +31,7 @@ import AboutComponent from '../components/About';
 
 const Index = (
   <Stack hideNavBar>
-    <Scene hideNavBar tabBarPosition={'bottom'}>
+    <Scene hideNavBar>
       <Tabs
         key="tabbar"
         swipeEnabled
@@ -39,28 +39,6 @@ const Index = (
         showLabel={true}
         {...DefaultProps.tabProps}
       >
-        <Stack
-          key="home"
-          title={AppConfig.appName.toUpperCase()}
-          icon={() => <Icon name="planet" {...DefaultProps.icons} />}
-          {...DefaultProps.navbarProps}
-        >
-          <Scene key="home" component={AboutComponent} />
-        </Stack>
-
-        <Stack
-          key="recipes"
-          title="RECIPES8"
-          icon={() => <Icon name="book" {...DefaultProps.icons} />}
-          {...DefaultProps.navbarProps}
-        >
-          <Scene
-            key="recipes"
-            component={RecipesContainer}
-            Layout={RecipesComponent}
-          />
-        </Stack>
-
         <Stack
           key="profile"
           title="PROFILE"
@@ -75,7 +53,7 @@ const Index = (
           <Scene
             back
             key="signUp"
-            title="SIGN UP"
+            title="Crear Usuario"
             {...DefaultProps.navbarProps}
             component={SignUpContainer}
             Layout={SignUpComponent}
@@ -91,27 +69,19 @@ const Index = (
           <Scene
             back
             key="forgotPassword"
-            title="FORGOT PASSWORD"
+            title="Olvidé Contraseña"
             {...DefaultProps.navbarProps}
             component={ForgotPasswordContainer}
             Layout={ForgotPasswordComponent}
           />
-          <Scene
-            back
-            key="locale"
-            title="CHANGE LANGUAGE"
-            {...DefaultProps.navbarProps}
-            component={LocaleContainer}
-            Layout={LocaleComponent}
-          />
-          <Scene
-            back
-            key="updateProfile"
-            title="UPDATE PROFILE"
-            {...DefaultProps.navbarProps}
-            component={UpdateProfileContainer}
-            Layout={UpdateProfileComponent}
-          />
+        </Stack>
+        <Stack
+          key="home"
+          title={AppConfig.appName.toUpperCase()}
+          icon={() => <Icon name="planet" {...DefaultProps.icons} />}
+          {...DefaultProps.navbarProps}
+        >
+          <Scene key="home" component={AboutComponent} />
         </Stack>
       </Tabs>
     </Scene>

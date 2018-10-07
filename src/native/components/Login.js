@@ -69,8 +69,8 @@ class Login extends React.Component {
         <Content>
           <View padder>
             <Header
-              title="Welcome back"
-              content="Please use your email and password to login."
+              title="Cumbre de las Américas"
+              content="Utilice su correo y contraseña para iniciar sesión."
             />
             { success ? <Messages type="success" message={success} /> : null }
             { error ? <Messages message={error} /> : null }

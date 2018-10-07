@@ -16,3 +16,5 @@ build/
 .gradle
 local.properties
 *.iml
+third-party/*
+

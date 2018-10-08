@@ -11,8 +11,8 @@ export default function userReducer(state = initialState, action) {
           loading: false,
           error: null,
           uid: action.data.uid,
-          email: action.data.email,
-          emailVerified: action.data.emailVerified,
+          user: action.data.user,
+          jwt: action.data.jwt,
         };
       }
       return initialState;

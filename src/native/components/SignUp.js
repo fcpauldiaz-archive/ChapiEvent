@@ -43,7 +43,11 @@ class SignUp extends React.Component {
   handleSubmit = () => {
     const { onFormSubmit } = this.props;
     onFormSubmit(this.state)
-      .then(() => Actions.login())
+      .then((data) => {
+        if (data.type == 'USER_LOGIN') {
+          Actions.home();
+        }
+      })
       .catch(e => console.log(`Error: ${e}`));
   }
 

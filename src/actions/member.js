@@ -101,19 +101,26 @@ export function login(formData) {
     // Validation checks
     if (!email) return reject({ message: ErrorMessages.missingEmail });
     if (!password) return reject({ message: ErrorMessages.missingPassword });
-    // TODO: call api to login here
-    await statusMessage(dispatch, 'loading', false);
-    // Send Login data to Redux
-    return resolve(
-      dispatch({
-        type: 'USER_LOGIN',
-        data: {
-          jwt: 'jwt',
-          user: 'user',
-          email: 'email'
-        }
+    fetch('https://chapievent.chapilabs.com/api/users/login', {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: 'post',
+      body: JSON.stringify(formData)
+    })
+      .then(result => result.json())
+      .then(async (result) => {
+        await statusMessage(dispatch, 'loading', false);
+        return resolve(dispatch({
+          type: 'USER_LOGIN',
+          data: {
+            jwt: result.token
+          }
+        }));
       })
-    );
+      .catch(reject);
+  
   }).catch(async (err) => {
     await statusMessage(dispatch, 'error', err.message);
     throw err.message;

@@ -10,8 +10,6 @@ export default function userReducer(state = initialState, action) {
           ...state,
           loading: false,
           error: null,
-          uid: action.data.uid,
-          user: action.data.user,
           jwt: action.data.jwt,
         };
       }

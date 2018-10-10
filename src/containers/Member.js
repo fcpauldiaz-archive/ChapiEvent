@@ -19,7 +19,6 @@ class Member extends Component {
   componentDidMount = () => {
     const { fetchData, member } = this.props;
     fetchData();
-    console.log(member)
     if (member && member.jwt) {
       setTimeout(() => {
         Actions.home();

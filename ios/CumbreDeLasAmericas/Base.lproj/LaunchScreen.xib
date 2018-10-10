@@ -35,7 +35,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Logo_ChapiLabs" translatesAutoresizingMaskIntoConstraints="NO" id="ppT-v8-ET7">
-                    <rect key="frame" x="149" y="332" width="156" height="87"/>
+                    <rect key="frame" x="141" y="314" width="156" height="87"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
             </subviews>

@@ -49,11 +49,6 @@ class Login extends React.Component {
   handleSubmit = () => {
     const { onFormSubmit } = this.props;
     onFormSubmit(this.state)
-      .then((data) => {
-        if (data.type === 'USER_TYPE') {
-          Actions.home();
-        }
-      })
       .catch(e => console.log(`Error: ${e}`));
   }
 

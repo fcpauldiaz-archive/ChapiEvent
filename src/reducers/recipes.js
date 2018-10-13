@@ -4,10 +4,10 @@ export const initialState = Store;
 
 export default function recipeReducer(state = initialState, action) {
   switch (action.type) {
-    case 'FAVOURITES_REPLACE': {
+    case 'EVENTS_RETRIEVE': {
       return {
         ...state,
-        favourites: action.data || [],
+        events: action.payload || [],
       };
     }
     case 'MEALS_REPLACE': {

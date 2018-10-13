@@ -22,70 +22,66 @@ import ForgotPasswordComponent from '../components/ForgotPassword';
 import MemberContainer from '../../containers/Member';
 import ProfileComponent from '../components/Profile';
 
-import AboutComponent from '../components/About';
+import HomeComponent from '../components/About';
+import HomeContainer from '../../containers/Home';
 
 const Index = (
   <Stack hideNavBar>
     <Scene hideNavBar>
-      <Tabs
-        key="tabbar"
-        swipeEnabled
-        type="replace"
-        showLabel={true}
-        {...DefaultProps.tabProps}
+      <Stack
+        key="profile"
+        title="PRINCIPAL"
+        icon={() => <Icon name="contact" {...DefaultProps.icons} />}
+        {...DefaultProps.navbarProps}
       >
-        <Stack
-          key="profile"
-          title="PRINCIPAL"
-          icon={() => <Icon name="contact" {...DefaultProps.icons} />}
+        <Scene
+          key="profileHome"
+          component={MemberContainer}
+          Layout={ProfileComponent}
+        />
+        <Scene
+          back
+          key="signUp"
+          title="Crear Usuario"
           {...DefaultProps.navbarProps}
-        >
-          <Scene
-            key="profileHome"
-            component={MemberContainer}
-            Layout={ProfileComponent}
-          />
-          <Scene
-            back
-            key="signUp"
-            title="Crear Usuario"
-            {...DefaultProps.navbarProps}
-            component={SignUpContainer}
-            Layout={SignUpComponent}
-          />
-          <Scene
-            back
-            key="login"
-            title="LOGIN"
-            {...DefaultProps.navbarProps}
-            component={LoginContainer}
-            Layout={LoginComponent}
-          />
-          <Scene
-            back
-            key="forgotPassword"
-            title="Olvidé Contraseña"
-            {...DefaultProps.navbarProps}
-            component={ForgotPasswordContainer}
-            Layout={ForgotPasswordComponent}
-          />
-        </Stack>
-        <Stack
+          component={SignUpContainer}
+          Layout={SignUpComponent}
+        />
+        <Scene
+          back
+          key="login"
+          title="LOGIN"
+          {...DefaultProps.navbarProps}
+          component={LoginContainer}
+          Layout={LoginComponent}
+        />
+        <Scene
+          back
+          key="forgotPassword"
+          title="Olvidé Contraseña"
+          {...DefaultProps.navbarProps}
+          component={ForgotPasswordContainer}
+          Layout={ForgotPasswordComponent}
+        />
+      </Stack>
+      <Stack
+        key="home"
+        title={AppConfig.appName.toUpperCase()}
+        icon={() => <Icon name="planet" {...DefaultProps.icons} />}
+        {...DefaultProps.navbarProps}
+      >
+        <Scene
           key="home"
-          title={AppConfig.appName.toUpperCase()}
-          icon={() => <Icon name="planet" {...DefaultProps.icons} />}
-          {...DefaultProps.navbarProps}
-        >
-          <Scene key="home" component={AboutComponent} />
-        </Stack>
-      </Tabs>
+          component={HomeContainer}
+          Layout={HomeComponent}
+        />
+      </Stack>
     </Scene>
 
     <Scene
       back
-      clone
-      key="recipe"
-      title="RECIPE"
+      key="event"
+      title="Evento"
       {...DefaultProps.navbarProps}
       component={RecipesContainer}
       Layout={RecipeViewComponent}

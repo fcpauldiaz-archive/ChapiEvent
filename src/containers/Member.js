@@ -22,7 +22,7 @@ class Member extends Component {
     if (member && member.jwt) {
       setTimeout(() => {
         Actions.home();
-      }, 500);
+      }, 200);
     }
   };
 

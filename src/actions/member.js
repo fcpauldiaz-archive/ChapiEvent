@@ -74,14 +74,29 @@ export function signUp(formData) {
 
 
 /**
- * Get this User's Details
+ * Get this events data
  */
-function getUserData(dispatch) {
-  const userData = {};
-  return dispatch({
-    type: 'USER_DETAILS_UPDATE',
-    data: userData
-  });
+export function getEventsData(day) {
+  console.log('day', day);
+  return async (dispatch) => {
+    try {
+      let events = await fetch('https://chapievent.chapilabs.com/api/events?day=' + day);
+      events = await events.json();
+      console.log(events);
+      dispatch({ type: 'EVENTS_RETRIEVE', payload: events });
+      return events;
+    } catch (err) {
+      dispatch({
+        type: 'USER_ERROR',
+        payload: [
+          {
+            error: err.message
+          }
+        ]
+      });
+      return [];
+    }
+  };
 }
 
 export function getMemberData() {

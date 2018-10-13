@@ -1,19 +1,21 @@
 import React from 'react';
 import {
-  Container,
-  Header,
-  Left,
   Body,
-  Right,
   Button,
-  Icon,
-  Title,
-  Segment,
+  Container,
   Content,
-  Text
+  Header,
+  Icon,
+  Left,
+  ListItem,
+  Right,
+  Segment,
+  Text,
+  Title,
+  View,
 } from 'native-base';
 import { Alert } from 'react-native';
-import Spacer from './Spacer';
+import { Actions } from 'react-native-router-flux';
 
 class Home extends React.Component {
 
@@ -24,21 +26,57 @@ class Home extends React.Component {
       second: false,
       third: false,
       active: 'first',
-    }
+      events: [],
+    };
+  }
+
+  async componentDidMount() {
+    const { onEventsRetrieve } = this.props;
+    const result = await onEventsRetrieve(this.state);
+    this.setState(prevState => ({ ...prevState, events: result }));
   }
 
   changeDay(param) {
-    this.setState(() => ({
-      first: false,
-      second: false,
-      third: false,
-      [param]: true,
-      active: param,
-    }));
+    const { onEventsRetrieve } = this.props;
+    console.log('entra');
+    this.setState(
+      {
+        first: false,
+        second: false,
+        third: false,
+        [param]: true,
+        active: param,
+      },
+      async () => {
+        const result = await onEventsRetrieve(this.state);
+        this.setState(prevState => ({ ...prevState, events: result }));
+      },
+    );
   }
 
   render() {
-    const { first, second, third, active } = this.state;
+    const { first, second, third, events } = this.state;
+    const searchResults = p => p.map(ev => (
+      <ListItem
+        key={ev._id}
+        button
+        itemDivider
+        selected
+        onPress={() => { Actions.event(ev); }}
+      >
+        <Body>
+          <Text>{ev.name}</Text>
+          <Text note>{ev.description}</Text>
+        </Body>
+        <Right>
+          {ev.qr === true ? (
+            <Right>
+              <Icon name="arrow-forward" />
+            </Right>
+          ) : null}
+        </Right>
+      </ListItem>
+    ));
     return (
       <Container>
         <Header hasSegment>
@@ -68,10 +106,20 @@ class Home extends React.Component {
           </Button>
         </Segment>
         <Content padder>
-          <Text>
-            Awesome segment
-            {active}
-          </Text>
+          {events.map((event, index) => {
+            console.log(event.events);
+            const List = searchResults(event.events);
+            return (
+              <View key={index}>
+                <ListItem>
+                  <Text>
+                    {event.hour}
+                  </Text>
+                </ListItem>
+                {List}
+              </View>
+            );
+          })}
         </Content>
       </Container>
     );

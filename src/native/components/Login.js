@@ -86,16 +86,6 @@ class Login extends React.Component {
                 onChangeText={v => this.handleChange('email', v)}
               />
             </Item>
-            <Item stackedLabel>
-              <Label>
-                {translate('Password', locale)}
-              </Label>
-              <Input
-                secureTextEntry
-                onChangeText={v => this.handleChange('password', v)}
-              />
-            </Item>
-
             <Spacer size={20} />
 
             <View padder>

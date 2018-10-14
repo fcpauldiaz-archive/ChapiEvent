@@ -12,8 +12,8 @@ class Member extends Component {
     fetchData: PropTypes.func.isRequired,
     member: PropTypes.shape({
       loading: PropTypes.bool.isRequired,
-      error: PropTypes.string
-    }).isRequired
+      error: PropTypes.string,
+    }).isRequired,
   };
 
   componentDidMount = () => {

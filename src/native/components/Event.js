@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, StyleSheet, Image } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import {
-  Container, Content, List, ListItem, Body, Left, Text, Icon,
+  Container, Content, List,
 } from 'native-base';
 import QRCode from 'react-native-qrcode';
-import { Actions } from 'react-native-router-flux';
 import Header from './Header';
 import Loading from './Loading';
 import Error from './Error';
@@ -14,8 +13,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center'
-  }
+    justifyContent: 'center',
+  },
 });
 
 const Event = ({ event, member, loading, error }) => {
@@ -28,6 +27,11 @@ const Event = ({ event, member, loading, error }) => {
   return (
     <Container>
       <Content>
+        <View padder>
+          <Header
+            title=""
+          />
+        </View>
         <List>
           <View style={styles.container}>
             <Content padder>
@@ -48,7 +52,7 @@ const Event = ({ event, member, loading, error }) => {
       </Content>
     </Container>
   );
-}
+};
 
 Event.propTypes = {
   member: PropTypes.shape({}),

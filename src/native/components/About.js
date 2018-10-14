@@ -14,15 +14,13 @@ import {
   Title,
   View,
 } from 'native-base';
-import { Alert } from 'react-native';
-import { Actions } from 'react-native-router-flux';
 
-import EventComponent from '../components/Event';
+import { Actions } from 'react-native-router-flux';
+import EventComponent from './Event';
 import EventContainer from '../../containers/Event';
 import DefaultProps from '../constants/navigation';
 
 class Home extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -67,10 +65,10 @@ class Home extends React.Component {
         itemDivider
         selected
         onPress={() => Actions.push('event', {
+          back: false,
           component: EventContainer,
           Layout: EventComponent,
           event: ev,
-          isLoading: true,
           ...DefaultProps.navbarProps,
         })
         }
@@ -118,7 +116,6 @@ class Home extends React.Component {
         </Segment>
         <Content padder>
           {events.map((event, index) => {
-            console.log(event.events);
             const List = searchResults(event.events);
             return (
               <View key={index}>

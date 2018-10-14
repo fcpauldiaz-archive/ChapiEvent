@@ -28,7 +28,7 @@ export function signUp(formData) {
     };
     fetch('https://chapievent.chapilabs.com/api/users', {
       headers: {
-        'Accept': 'application/json',
+        Accept: 'application/json',
         'Content-Type': 'application/json'
       },
       method: 'post',
@@ -40,7 +40,7 @@ export function signUp(formData) {
         };
         fetch('https://chapievent.chapilabs.com/api/users/login', {
           headers: {
-            'Accept': 'application/json',
+            Accept: 'application/json',
             'Content-Type': 'application/json'
           },
           method: 'post',
@@ -103,12 +103,10 @@ export function login(formData) {
   const { email } = formData;
 
   return dispatch => new Promise(async (resolve, reject) => {
-
     await statusMessage(dispatch, 'loading', true);
 
     // Validation checks
     if (!email) return reject({ message: ErrorMessages.missingEmail });
-    if (!password) return reject({ message: ErrorMessages.missingPassword });
     fetch('https://chapievent.chapilabs.com/api/users/login', {
       headers: {
         Accept: 'application/json',
@@ -130,8 +128,8 @@ export function login(formData) {
             jwt: result.token,
             email,
           },
-        }))
-      })
+        }));
+      });
   }).catch(async (err) => {
     await statusMessage(dispatch, 'error', err.message);
     throw err.message;
@@ -161,7 +159,6 @@ export function resetPassword(formData) {
  * Loading
  */
 export async function loading() {
-  await statusMessage(dispatch, 'loading', true);
   return dispatch => new Promise(async (resolve, reject) => {
 
     setTimeout(() => {}, 3000);

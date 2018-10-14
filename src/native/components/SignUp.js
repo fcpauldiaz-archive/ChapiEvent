@@ -44,7 +44,7 @@ class SignUp extends React.Component {
     const { onFormSubmit } = this.props;
     onFormSubmit(this.state)
       .then((data) => {
-        if (data.type == 'USER_LOGIN') {
+        if (data.type === 'USER_LOGIN') {
           Actions.home();
         }
       })

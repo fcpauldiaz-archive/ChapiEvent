@@ -44,18 +44,14 @@ const Profile = ({ member, logout }) => (
               </Text>
             </Body>
           </ListItem>
-          <ListItem onPress={Actions.forgotPassword} icon>
-            <Left>
-              <Icon name="help-buoy" />
-            </Left>
-            <Body>
-              <Text>
-                Olvidé Contraseña
-              </Text>
-            </Body>
-          </ListItem>
         </View>
       </List>
+      <View style={styles.container}>
+        <Image
+          source={require('../../images/chapilabs.png')}
+          style={{ height: 100, width: 200 }}
+        />
+      </View>
     </Content>
   </Container>
 );
@@ -73,8 +69,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center'
-  }
+    justifyContent: 'center',
+  },
 });
 
 export default Profile;

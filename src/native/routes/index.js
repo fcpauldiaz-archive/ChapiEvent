@@ -73,17 +73,16 @@ const Index = (
         {...DefaultProps.navbarProps}
       >
         <Scene key="home" component={HomeContainer} Layout={HomeComponent} />
+        <Scene
+          back={true}
+          key="event"
+          title="Evento"
+          {...DefaultProps.navbarProps}
+          component={EventContainer}
+          Layout={EventComponent}
+        />
       </Stack>
     </Scene>
-
-    <Scene
-      back
-      key="event"
-      title="Evento"
-      {...DefaultProps.navbarProps}
-      component={EventContainer}
-      Layout={EventComponent}
-    />
   </Stack>
 );
 

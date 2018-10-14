@@ -18,12 +18,14 @@ import LoginComponent from '../components/Login';
 import ForgotPasswordContainer from '../../containers/ForgotPassword';
 import ForgotPasswordComponent from '../components/ForgotPassword';
 
-
 import MemberContainer from '../../containers/Member';
 import ProfileComponent from '../components/Profile';
 
 import HomeComponent from '../components/About';
 import HomeContainer from '../../containers/Home';
+
+import EventComponent from '../components/Event';
+import EventContainer from '../../containers/Event';
 
 const Index = (
   <Stack hideNavBar>
@@ -70,11 +72,7 @@ const Index = (
         icon={() => <Icon name="planet" {...DefaultProps.icons} />}
         {...DefaultProps.navbarProps}
       >
-        <Scene
-          key="home"
-          component={HomeContainer}
-          Layout={HomeComponent}
-        />
+        <Scene key="home" component={HomeContainer} Layout={HomeComponent} />
       </Stack>
     </Scene>
 
@@ -83,8 +81,8 @@ const Index = (
       key="event"
       title="Evento"
       {...DefaultProps.navbarProps}
-      component={RecipesContainer}
-      Layout={RecipeViewComponent}
+      component={EventContainer}
+      Layout={EventComponent}
     />
   </Stack>
 );

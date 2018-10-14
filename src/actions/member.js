@@ -12,23 +12,19 @@ export function registroHoras(formData) {
 }
 
 export function signUp(formData) {
-  const { email, password, password2, firstName, lastName } = formData;
+  const { email, firstName, lastName } = formData;
 
   return dispatch => new Promise(async (resolve, reject) => {
     // Validation checks
     if (!firstName) return reject({ message: ErrorMessages.missingFirstName });
     if (!lastName) return reject({ message: ErrorMessages.missingLastName });
     if (!email) return reject({ message: ErrorMessages.missingEmail });
-    if (!password) return reject({ message: ErrorMessages.missingPassword });
-    if (!password2) return reject({ message: ErrorMessages.missingPassword });
-    if (password !== password2) return reject({ message: ErrorMessages.passwordsDontMatch });
 
     await statusMessage(dispatch, 'loading', true);
     const user = {
       first_name: firstName,
       last_name: lastName,
       email,
-      password,
     };
     fetch('https://chapievent.chapilabs.com/api/users', {
       headers: {
@@ -41,7 +37,6 @@ export function signUp(formData) {
       if (res.ok) {
         const loginData = {
           email,
-          password,
         };
         fetch('https://chapievent.chapilabs.com/api/users/login', {
           headers: {
@@ -57,13 +52,13 @@ export function signUp(formData) {
               type: 'USER_LOGIN',
               data: {
                 jwt: result.token,
-                user,
+                email,
               },
             }));
           }).catch(reject);
       } else {
         await statusMessage(dispatch, 'loading', false);
-        throw new Error('El correo ya existe');
+        return reject({ message: 'El correo ya está registrado' });
       }
     }).catch(reject);
   }).catch(async (err) => {
@@ -77,12 +72,10 @@ export function signUp(formData) {
  * Get this events data
  */
 export function getEventsData(day) {
-  console.log('day', day);
   return async (dispatch) => {
     try {
       let events = await fetch('https://chapievent.chapilabs.com/api/events?day=' + day);
       events = await events.json();
-      console.log(events);
       dispatch({ type: 'EVENTS_RETRIEVE', payload: events });
       return events;
     } catch (err) {
@@ -107,7 +100,7 @@ export function getMemberData() {
  * Login
  */
 export function login(formData) {
-  const { email, password } = formData;
+  const { email } = formData;
 
   return dispatch => new Promise(async (resolve, reject) => {
 
@@ -126,16 +119,19 @@ export function login(formData) {
     })
       .then(result => result.json())
       .then(async (result) => {
+        if ('errmsg' in result) {
+          await statusMessage(dispatch, 'error', result.errmsg);
+          return reject({ message: result.errmsg });
+        }
         await statusMessage(dispatch, 'loading', false);
         return resolve(dispatch({
           type: 'USER_LOGIN',
           data: {
-            jwt: result.token
-          }
-        }));
+            jwt: result.token,
+            email,
+          },
+        }))
       })
-      .catch(reject);
-  
   }).catch(async (err) => {
     await statusMessage(dispatch, 'error', err.message);
     throw err.message;
@@ -162,35 +158,14 @@ export function resetPassword(formData) {
 }
 
 /**
- * Update Profile
+ * Loading
  */
-export function updateProfile(formData) {
-  const {
-    email,
-    password,
-    password2,
-    firstName,
-    lastName,
-    changeEmail,
-    changePassword
-  } = formData;
-
+export async function loading() {
+  await statusMessage(dispatch, 'loading', true);
   return dispatch => new Promise(async (resolve, reject) => {
-    // Validation checks
-    if (!firstName) {
-      return reject({ message: ErrorMessages.missingFirstName + '2'});
-    }
-    if (!lastName) return reject({ message: ErrorMessages.missingLastName });
-    if (changeEmail) {
-      if (!email) return reject({ message: ErrorMessages.missingEmail });
-    }
-    if (changePassword) {
-      if (!password) return reject({ message: ErrorMessages.missingPassword });
-      if (!password2) return reject({ message: ErrorMessages.missingPassword });
-      if (password !== password2) return reject({ message: ErrorMessages.passwordsDontMatch });
-    }
 
-    await statusMessage(dispatch, 'loading', true);
+    setTimeout(() => {}, 3000);
+    await statusMessage(dispatch, 'loading', false);
 
     return {};
   }).catch(async (err) => {

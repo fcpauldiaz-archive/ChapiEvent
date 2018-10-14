@@ -6,12 +6,12 @@ export default function userReducer(state = initialState, action) {
   switch (action.type) {
     case 'USER_LOGIN': {
       if (action.data) {
-        console.log(action);
         return {
           ...state,
           loading: false,
           error: null,
           jwt: action.data.jwt,
+          email: action.data.email,
         };
       }
       return initialState;

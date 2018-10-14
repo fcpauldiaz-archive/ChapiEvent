@@ -19,7 +19,7 @@ class Member extends Component {
   componentDidMount = () => {
     const { fetchData, member } = this.props;
     fetchData();
-    if (member && member.jwt) {
+    if (member && member.jwt && member.email) {
       setTimeout(() => {
         Actions.home();
       }, 200);

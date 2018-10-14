@@ -17,6 +17,10 @@ import {
 import { Alert } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
+import EventComponent from '../components/Event';
+import EventContainer from '../../containers/Event';
+import DefaultProps from '../constants/navigation';
+
 class Home extends React.Component {
 
   constructor(props) {
@@ -62,7 +66,14 @@ class Home extends React.Component {
         button
         itemDivider
         selected
-        onPress={() => { Actions.event(ev); }}
+        onPress={() => Actions.push('event', {
+          component: EventContainer,
+          Layout: EventComponent,
+          event: ev,
+          isLoading: true,
+          ...DefaultProps.navbarProps,
+        })
+        }
       >
         <Body>
           <Text>{ev.name}</Text>

@@ -12,6 +12,7 @@ export default function userReducer(state = initialState, action) {
           error: null,
           jwt: action.data.jwt,
           email: action.data.email,
+          username: action.data.username,
         };
       }
       return initialState;

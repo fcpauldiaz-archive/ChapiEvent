@@ -43,6 +43,7 @@ const Event = ({ event, member, loading, error }) => {
                 value={JSON.stringify({
                   email: member.email,
                   event_id: event._id,
+                  username: member.username,
                 })}
                 size={250}
               />

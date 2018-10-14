@@ -126,6 +126,7 @@ export function login(formData) {
           type: 'USER_LOGIN',
           data: {
             jwt: result.token,
+            username: result.username,
             email,
           },
         }));
@@ -160,7 +161,6 @@ export function resetPassword(formData) {
  */
 export async function loading() {
   return dispatch => new Promise(async (resolve, reject) => {
-
     setTimeout(() => {}, 3000);
     await statusMessage(dispatch, 'loading', false);
 

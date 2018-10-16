@@ -72,7 +72,13 @@ const Index = (
         icon={() => <Icon name="planet" {...DefaultProps.icons} />}
         {...DefaultProps.navbarProps}
       >
-        <Scene key="home" component={HomeContainer} Layout={HomeComponent} />
+        <Scene
+          back={false}
+          key="home"
+          {...DefaultProps.navbarProps}
+          component={HomeContainer}
+          Layout={HomeComponent}
+        />
         <Scene
           back={true}
           key="event"

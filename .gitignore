@@ -18,3 +18,7 @@ local.properties
 *.iml
 third-party/*
 
+android/keystores/*
+android/keystore.jks
+*.apk
+

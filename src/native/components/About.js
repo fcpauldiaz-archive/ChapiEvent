@@ -6,7 +6,6 @@ import {
   Content,
   Header,
   Icon,
-  Left,
   ListItem,
   Right,
   Segment,
@@ -17,6 +16,7 @@ import {
 
 import { Actions } from 'react-native-router-flux';
 import EventComponent from './Event';
+import Loading from './Loading';
 import EventContainer from '../../containers/Event';
 import DefaultProps from '../constants/navigation';
 
@@ -40,7 +40,6 @@ class Home extends React.Component {
 
   changeDay(param) {
     const { onEventsRetrieve } = this.props;
-    console.log('entra');
     this.setState(
       {
         first: false,
@@ -58,6 +57,8 @@ class Home extends React.Component {
 
   render() {
     const { first, second, third, events } = this.state;
+    const { loading } = this.props; 
+    if (loading) return <Loading />;
     const searchResults = p => p.map(ev => (
       <ListItem
         key={ev._id}
@@ -89,19 +90,9 @@ class Home extends React.Component {
     return (
       <Container>
         <Header hasSegment>
-          <Left>
-            <Button transparent>
-              <Icon name="arrow-back" />
-            </Button>
-          </Left>
-          <Body>
+          <Body style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
             <Title>Días</Title>
           </Body>
-          <Right>
-            <Button transparent>
-              <Icon name="search" />
-            </Button>
-          </Right>
         </Header>
         <Segment>
           <Button first active={first} onPress={() => this.changeDay('first')}>

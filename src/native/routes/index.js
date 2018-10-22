@@ -1,13 +1,9 @@
 import React from 'react';
-import { Scene, Tabs, Stack } from 'react-native-router-flux';
+import { Scene, Stack } from 'react-native-router-flux';
 import { Icon } from 'native-base';
 
 import DefaultProps from '../constants/navigation';
 import AppConfig from '../../constants/config';
-
-import RecipesContainer from '../../containers/Recipes';
-import RecipesComponent from '../components/Recipes';
-import RecipeViewComponent from '../components/Recipe';
 
 import SignUpContainer from '../../containers/SignUp';
 import SignUpComponent from '../components/SignUp';
@@ -37,6 +33,7 @@ const Index = (
         {...DefaultProps.navbarProps}
       >
         <Scene
+          hideNavBar
           key="profileHome"
           component={MemberContainer}
           Layout={ProfileComponent}
@@ -67,20 +64,21 @@ const Index = (
         />
       </Stack>
       <Stack
-        key="home"
+        key="main"
         title={AppConfig.appName.toUpperCase()}
         icon={() => <Icon name="planet" {...DefaultProps.icons} />}
         {...DefaultProps.navbarProps}
       >
         <Scene
           back={false}
+          renderBackButton={() => null}
           key="home"
           {...DefaultProps.navbarProps}
           component={HomeContainer}
           Layout={HomeComponent}
         />
         <Scene
-          back={true}
+          back
           key="event"
           title="Evento"
           {...DefaultProps.navbarProps}

@@ -1,6 +1,5 @@
 {
-  "name": "rnsk",
-  "homepage": "http://react-boilerplate.mcnam.ee/",
+  "name": "ChapiEvent",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {

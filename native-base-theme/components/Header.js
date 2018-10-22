@@ -27,13 +27,17 @@ export default (variables = variable) => {
         "NativeBase.Title": {
           fontSize: variables.titleFontSize - 2,
           fontFamily: variables.titleFontfamily,
-          textAlign: "center"
+          textAlign: "center",
+          justifyContent: 'center',
+          alignItems: 'center',
         },
         "NativeBase.Subtitle": {
           fontSize: variables.subTitleFontSize,
           fontFamily: variables.titleFontfamily,
           color: variables.subtitleColor,
-          textAlign: "center"
+          textAlign: "center",
+          justifyContent: 'center',
+          alignItems: 'center',
         }
       }
     },

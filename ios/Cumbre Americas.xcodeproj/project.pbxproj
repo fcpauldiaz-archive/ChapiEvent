@@ -1427,6 +1427,7 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.chapilabs.cumbreamericas;
 				PRODUCT_NAME = "Cumbre Americas";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1450,6 +1451,7 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.chapilabs.cumbreamericas;
 				PRODUCT_NAME = "Cumbre Americas";
 				VERSIONING_SYSTEM = "apple-generic";
 			};

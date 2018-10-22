@@ -28,7 +28,7 @@ class Login extends Component {
     return onFormSubmit(data)
       .then((result) => {
         if (result.type === 'USER_LOGIN') {
-          Actions.home();
+          Actions.main();
         }
       })
       .catch((err) => { this.setState({ errorMessage: err }); throw err; });

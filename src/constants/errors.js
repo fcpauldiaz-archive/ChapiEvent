@@ -13,7 +13,7 @@ export default {
   missingLastName: 'El apellido no puede estar en blanco',
   missingEmail: 'El correo no puede estar en blanco',
   missingPassword: 'La contraseña no puede estar en blanco',
-  passwordsDontMatch: 'Las contraseñas no coinciden',
+  missingToken: 'Necesita un código para crear un usuario',
 
   // Recipes
   recipe404: 'Recipe not found',

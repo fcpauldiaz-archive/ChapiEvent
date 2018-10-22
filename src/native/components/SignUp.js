@@ -26,8 +26,7 @@ class SignUp extends React.Component {
       firstName: '',
       lastName: '',
       email: '',
-      password: '',
-      password2: '',
+      token: '',
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -89,6 +88,15 @@ class SignUp extends React.Component {
                 autoCapitalize="none"
                 keyboardType="email-address"
                 onChangeText={v => this.handleChange('email', v)}
+              />
+            </Item>
+            <Item stackedLabel>
+              <Label>
+                Código de Seguridad
+              </Label>
+              <Input
+                autoCapitalize="none"
+                onChangeText={v => this.handleChange('token', v)}
               />
             </Item>
 

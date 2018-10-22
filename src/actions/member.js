@@ -12,19 +12,21 @@ export function registroHoras(formData) {
 }
 
 export function signUp(formData) {
-  const { email, firstName, lastName } = formData;
+  const { email, firstName, lastName, token } = formData;
 
   return dispatch => new Promise(async (resolve, reject) => {
     // Validation checks
     if (!firstName) return reject({ message: ErrorMessages.missingFirstName });
     if (!lastName) return reject({ message: ErrorMessages.missingLastName });
     if (!email) return reject({ message: ErrorMessages.missingEmail });
+    if (!email) return reject({ message: ErrorMessages.missingToken });
 
     await statusMessage(dispatch, 'loading', true);
     const user = {
       first_name: firstName,
       last_name: lastName,
       email,
+      token,
     };
     fetch('https://chapievent.chapilabs.com/api/users', {
       headers: {
@@ -74,8 +76,10 @@ export function signUp(formData) {
 export function getEventsData(day) {
   return async (dispatch) => {
     try {
+      await statusMessage(dispatch, 'loading', true);
       let events = await fetch('https://chapievent.chapilabs.com/api/events?day=' + day);
       events = await events.json();
+      await statusMessage(dispatch, 'loading', false);
       dispatch({ type: 'EVENTS_RETRIEVE', payload: events });
       return events;
     } catch (err) {

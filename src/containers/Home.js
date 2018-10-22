@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Actions } from 'react-native-router-flux';
 
 import { getEventsData } from '../actions/member';
 
@@ -35,7 +34,6 @@ class Home extends Component {
       day = 3;
     }
     return onEventsRetrieve(day)
-      
   }
 
   render = () => {

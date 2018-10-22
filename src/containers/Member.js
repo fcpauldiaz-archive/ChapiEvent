@@ -3,13 +3,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 
-import { logout, getMemberData } from '../actions/member';
+import { logout } from '../actions/member';
 
 class Member extends Component {
   static propTypes = {
     Layout: PropTypes.func.isRequired,
     memberLogout: PropTypes.func.isRequired,
-    fetchData: PropTypes.func.isRequired,
     member: PropTypes.shape({
       loading: PropTypes.bool.isRequired,
       error: PropTypes.string,
@@ -17,12 +16,9 @@ class Member extends Component {
   };
 
   componentDidMount = () => {
-    const { fetchData, member } = this.props;
-    fetchData();
-    if (member && member.jwt && member.email) {
-      setTimeout(() => {
-        Actions.home();
-      }, 200);
+    const { member } = this.props;
+    if (member && member.jwt && member.email && Actions.currentScene !== 'main') {
+      Actions.main();
     }
   };
 
@@ -39,7 +35,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   memberLogout: logout,
-  fetchData: getMemberData,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Member);

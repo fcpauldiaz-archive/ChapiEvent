@@ -13,7 +13,7 @@ export default {
   platformStyle,
   platform,
 
-  //Android
+  // Android
   androidRipple: true,
   androidRippleColor: 'rgba(256, 256, 256, 0.3)',
   androidRippleColorDark: 'rgba(0, 0, 0, 0.15)',
@@ -95,7 +95,7 @@ export default {
   checkboxTickColor: '#fff',
 
   // Color
-  brandPrimary: platform === 'ios' ? '#2D3047' : '#3F51B5',
+  brandPrimary: platform === 'ios' ? '#2D3047' : '#2D3047',
   brandInfo: '#62B1F6',
   brandSuccess: '#5cb85c',
   brandDanger: '#d9534f',
@@ -127,19 +127,19 @@ export default {
   activeTab: platform === 'ios' ? '#007aff' : '#fff',
   sTabBarActiveTextColor: '#007aff',
   tabBarActiveTextColor: platform === 'ios' ? '#2874F0' : '#fff',
-  tabActiveBgColor: platform === 'ios' ? '#cde1f9' : '#3F51B5',
+  tabActiveBgColor: platform === 'ios' ? '#cde1f9' : '#cde1f9',
 
   // Header
   toolbarBtnColor: platform === 'ios' ? '#007aff' : '#fff',
-  toolbarDefaultBg: platform === 'ios' ? '#F8F8F8' : '#3F51B5',
-  toolbarHeight: platform === 'ios' ? (isIphoneX ? 88 : 64) : 56,
+  toolbarDefaultBg: platform === 'ios' ? '#F8F8F8' : '#F8F8F8',
+  toolbarHeight: platform === 'ios' ? (isIphoneX ? 88 : 64) : 40,
   toolbarSearchIconSize: platform === 'ios' ? 20 : 23,
   toolbarInputColor: platform === 'ios' ? '#CECDD2' : '#fff',
   searchBarHeight: platform === 'ios' ? 30 : 40,
   searchBarInputHeight: platform === 'ios' ? 30 : 50,
   toolbarBtnTextColor: platform === 'ios' ? '#007aff' : '#fff',
   iosStatusbar: 'dark-content',
-  toolbarDefaultBorder: platform === 'ios' ? '#a7a6ab' : '#3F51B5',
+  toolbarDefaultBorder: platform === 'ios' ? '#a7a6ab' : '#a7a6ab',
   get statusBarColor() {
     return color(this.toolbarDefaultBg)
       .darken(0.2)
@@ -198,12 +198,12 @@ export default {
   },
 
   // Segment
-  segmentBackgroundColor: platform === 'ios' ? '#F8F8F8' : '#3F51B5',
-  segmentActiveBackgroundColor: platform === 'ios' ? '#007aff' : '#fff',
-  segmentTextColor: platform === 'ios' ? '#007aff' : '#fff',
-  segmentActiveTextColor: platform === 'ios' ? '#fff' : '#3F51B5',
-  segmentBorderColor: platform === 'ios' ? '#007aff' : '#fff',
-  segmentBorderColorMain: platform === 'ios' ? '#a7a6ab' : '#3F51B5',
+  segmentBackgroundColor: platform === 'ios' ? '#F8F8F8' : '#F8F8F8',
+  segmentActiveBackgroundColor: platform === 'ios' ? '#007aff' : '#007aff',
+  segmentTextColor: platform === 'ios' ? '#007aff' : '#007aff',
+  segmentActiveTextColor: platform === 'ios' ? '#fff' : '#fff',
+  segmentBorderColor: platform === 'ios' ? '#007aff' : '#007aff',
+  segmentBorderColorMain: platform === 'ios' ? '#a7a6ab' : '#a7a6ab',
 
   // Spinner
   defaultSpinnerColor: '#45D56E',
@@ -232,8 +232,8 @@ export default {
   titleFontfamily: platform === 'ios' ? 'System' : 'Roboto_medium',
   titleFontSize: platform === 'ios' ? 17 : 19,
   subTitleFontSize: platform === 'ios' ? 12 : 14,
-  subtitleColor: platform === 'ios' ? '#000' : '#fff',
-  titleFontColor: platform === 'ios' ? '#000' : '#fff',
+  subtitleColor: platform === 'ios' ? '#000' : '#000',
+  titleFontColor: platform === 'ios' ? '#000' : '#000',
 
   // Other
   borderRadiusBase: platform === 'ios' ? 5 : 2,

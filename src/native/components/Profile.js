@@ -7,7 +7,16 @@ import {
 import { Actions } from 'react-native-router-flux';
 import Header from './Header';
 
-const Profile = ({ member, logout }) => (
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
+
+
+const Profile = () => (
   <Container>
     <Content>
       <List>
@@ -64,13 +73,5 @@ Profile.propTypes = {
 Profile.defaultProps = {
   member: {},
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
 
 export default Profile;

@@ -21,4 +21,5 @@ third-party/*
 android/keystores/*
 android/keystore.jks
 *.apk
+*.env
 

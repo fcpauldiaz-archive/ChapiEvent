@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-
-import { signUp } from '../actions/member';
+import { signUp } from '../actions/users';
 
 class SignUp extends Component {
   static propTypes = {

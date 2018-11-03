@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Actions } from 'react-native-router-flux';
 
-import { getEventsData, loading } from '../actions/member';
+import { getEventsData } from '../actions/users';
 
 class Event extends Component {
   static propTypes = {
@@ -16,27 +15,20 @@ class Event extends Component {
 
   state = {};
 
-  componentDidMount() {
-    loading();
-  }
-
-  onEventsRetrieve = (data) => {
-    loading();
-  }
-
   render = () => {
     const {
       member,
       Layout,
       event,
       isLoading,
+      onEventsRetrieve,
     } = this.props;
     return (
       <Layout
         member={member}
         loading={isLoading}
         event={event}
-        onEventsRetrieve={this.onEventsRetrieve}
+        onEventsRetrieve={onEventsRetrieve}
       />
     );
   }

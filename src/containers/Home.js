@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-
-import { getEventsData } from '../actions/member';
+import { getEventsData } from '../actions/users';
 
 class Home extends Component {
   static propTypes = {
@@ -16,13 +15,6 @@ class Home extends Component {
     isLoading: false,
   }
 
-  state = {
-    first: true,
-    second: false,
-    third: false,
-    active: 'first',
-  };
-
   onEventsRetrieve = (data) => {
     const { onEventsRetrieve } = this.props;
     let day;
@@ -33,7 +25,7 @@ class Home extends Component {
     } else if (data.third) {
       day = 3;
     }
-    return onEventsRetrieve(day)
+    return onEventsRetrieve(day);
   }
 
   render = () => {

@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-
-import { logout } from '../actions/member';
+import { logout } from '../actions/users';
 
 class Member extends Component {
   static propTypes = {

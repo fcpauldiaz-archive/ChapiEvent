@@ -14,7 +14,7 @@ export default {
   missingEmail: 'El correo no puede estar en blanco',
   missingPassword: 'La contraseña no puede estar en blanco',
   missingToken: 'Necesita un código para crear un usuario',
-
+  invalidEmail: 'El email es inválido',
   // Recipes
   recipe404: 'Recipe not found',
   missingMealId: 'Missing meal definition',

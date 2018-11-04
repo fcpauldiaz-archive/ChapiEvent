@@ -11,9 +11,6 @@ import SignUpComponent from '../components/SignUp';
 import LoginContainer from '../../containers/Login';
 import LoginComponent from '../components/Login';
 
-import ForgotPasswordContainer from '../../containers/ForgotPassword';
-import ForgotPasswordComponent from '../components/ForgotPassword';
-
 import MemberContainer from '../../containers/Member';
 import ProfileComponent from '../components/Profile';
 
@@ -53,14 +50,6 @@ const Index = (
           {...DefaultProps.navbarProps}
           component={LoginContainer}
           Layout={LoginComponent}
-        />
-        <Scene
-          back
-          key="forgotPassword"
-          title="Olvidé Contraseña"
-          {...DefaultProps.navbarProps}
-          component={ForgotPasswordContainer}
-          Layout={ForgotPasswordComponent}
         />
       </Stack>
       <Stack

@@ -26,7 +26,8 @@ class NetworkService {
       body: JSON.stringify(data),
     });
     if (response.ok) return response.json();
-    throw new Error(response.status);
+    const error = await response.json();
+    throw new Error(error.message);
   }
 
   async getFetch(url) {
@@ -38,7 +39,8 @@ class NetworkService {
       method: 'get',
     });
     if (response.ok) return response.json();
-    throw new Error(response.status);
+    const error = await response.json();
+    throw new Error(error.message);
   }
 }
 

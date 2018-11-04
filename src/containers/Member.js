@@ -8,15 +8,16 @@ class Member extends Component {
   static propTypes = {
     Layout: PropTypes.func.isRequired,
     memberLogout: PropTypes.func.isRequired,
-    member: PropTypes.shape({
+    user: PropTypes.shape({
       loading: PropTypes.bool.isRequired,
       error: PropTypes.string,
     }).isRequired,
   };
 
   componentDidMount = () => {
-    const { member } = this.props;
-    if (member && member.jwt && member.email && Actions.currentScene !== 'main') {
+    const { user } = this.props;
+    console.log(this.props);
+    if (user && user.jwt && user.email && Actions.currentScene !== 'main') {
       Actions.main();
     }
   };
@@ -29,7 +30,7 @@ class Member extends Component {
 }
 
 const mapStateToProps = state => ({
-  member: state.member || {},
+  user: state.user || {},
 });
 
 const mapDispatchToProps = {

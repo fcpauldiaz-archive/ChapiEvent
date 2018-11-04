@@ -2,15 +2,21 @@ import ErrorMessages from '../constants/errors';
 import statusMessage from './status';
 import network from './network_service';
 
+function validateEmail(email) {
+  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
+}
+
 export function signUp(formData) {
   const { email, firstName, lastName, token } = formData;
 
   return async (dispatch) => {
     // Validation checks
-    if (!firstName) throw new Error(ErrorMessages.missingFirstName);
-    if (!lastName) throw new Error(ErrorMessages.missingLastName);
-    if (!email) throw new Error(ErrorMessages.missingEmail);
-    if (!email) throw new Error(ErrorMessages.missingToken);
+    if (!firstName) throw ErrorMessages.missingFirstName;
+    if (!lastName) throw ErrorMessages.missingLastName;
+    if (!email) throw ErrorMessages.missingEmail;
+    if (!token) throw ErrorMessages.missingToken;
+    if (!validateEmail(email)) throw ErrorMessages.invalidEmail;
 
     await statusMessage(dispatch, 'loading', true);
     const user = {
@@ -32,6 +38,7 @@ export function signUp(formData) {
       });
     } catch (err) {
       await statusMessage(dispatch, 'loading', false);
+      console.log(err);
       throw err.message;
     }
   };
@@ -77,12 +84,12 @@ export function login(formData) {
     await statusMessage(dispatch, 'loading', true);
 
     // Validation checks
-    if (!email) throw new Error(ErrorMessages.missingEmail);
+    if (!email) throw ErrorMessages.missingEmail;
     try {
       const result = await network.loginUser(formData);
       if ('errmsg' in result) {
         await statusMessage(dispatch, 'error', result.errmsg);
-        throw new Error(result.errmsg);
+        throw result.errmsg;
       }
       await statusMessage(dispatch, 'loading', false);
       return dispatch({

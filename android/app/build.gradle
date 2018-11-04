@@ -140,7 +140,7 @@ android {
 }
 
 dependencies {
-    compile project(':react-native-config')
+    implementation project(':react-native-config')
     implementation project(':react-native-splash-screen')
     implementation project(':react-native-vector-icons')
     implementation fileTree(dir: "libs", include: ["*.jar"])
